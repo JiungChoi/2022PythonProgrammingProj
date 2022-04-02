@@ -10,19 +10,18 @@ def dduck(ary, M):
     st = 0
     end = ary[-1]
     
-    while(st<end):
+    while(st<=end):
         H = (end+st)//2
         total = 0
         for idx in range(len(ary)):
             total += (ary[idx]-H) if ary[idx] > H else 0
         
-        if total > M : st = H+1
-        elif total < M : end = H-1
+        if total > M :
+            st = H+1
+            if not (st<=end): return H+1
+        elif total < M :
+            end = H-1
+            if not (st<=end): return H-1
         else: return H
-    return H+1
 
-print(dduck(dduckAry, M))
-
-
-
-        
+print(dduck(dduckAry, M))        
